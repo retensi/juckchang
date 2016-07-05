@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}][%-5level][%logger{36}] %msg%n</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/home/taba/log/www.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			파일이 하루에 한개씩 생성된다
+			<fileNamePattern>/home/taba/log/www.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			maxHIstory 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다. 위 설정데로 라면 30일이 지난 파일은 삭제가 된다.
+			<maxHistory>30</maxHistory>
+			200MB 되면 파일 새로 생성
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>200MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<encoder>
+			<Pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}][%-5level][%logger{36}] %msg%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
+		<connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
+			<driverClass>org.mariadb.jdbc.Driver</driverClass>
+			<url>jdbc:mariadb://115.68.42.72:3306/taba_log</url>
+			<user>taba</user>
+			<password>xkqk_9984</password>
+		</connectionSource>
+	</appender> 
+	
+	<appender name="asyncFile" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="FILE"/>
+    </appender>
+	
+	<appender name="asyncDB" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="DB"/>
+        <includeCallerData>true</includeCallerData>
+    </appender>-->
+	
+	<logger name="org" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="bella" level="DEBUG" additivity="false">
+    	<appender-ref ref="STDOUT" />
+	</logger>
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
